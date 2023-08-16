@@ -1,0 +1,3 @@
+>>> [print(key,':',value) for key, value in test_dict.items()]
+# reads line by line instead of showing the raw text
+# will also return [None] * nb_items_in_dict

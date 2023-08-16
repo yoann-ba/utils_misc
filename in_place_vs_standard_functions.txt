@@ -1,0 +1,60 @@
+
+
+Whether or not a python function acts in place in regards to its parameters depends on their type and how they're called.
+
+Immutable types will never be modified in place.
+
+Otherwise, it depends on whether a variable of the same name is declared in function scope, in which case the parameter isn't modified.
+If the parameter is just called to access one of its attributes then no new variable is declared, and the parameter is modified
+
+###############################################################################################
+
+# doesn't modify the parameter
+# 
+def test2(nb):
+    nb = nb + 5 
+    return nb
+a = 10
+b = test2(a)
+# a is still 10 here
+
+# - 
+
+# doesn't declare new var, df is modified
+def test_df(df):
+    df['y_ratio'] = df['UniProt_ID'] 
+    return df
+
+# - 
+
+# declares a new var of same name, 'df' in parameter will not be modified
+def test_df2(df):
+    df = df.groupby('pubchem_c_id').size() # declares new variable, first df is safe
+    return df
+
+
+def test3(list_in):
+    
+    list_in.reverse() # in place, returns nothing and var is modified
+    
+    return list_in # already reversed
+
+
+
+##############################################################################################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
